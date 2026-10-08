@@ -31,14 +31,27 @@ jobs:
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;36.0.0" > /dev/null
 
       - name: Decode signing key
+        id: key
         env:
           KEYSTORE_B64: ${{ secrets.CS_KEYSTORE_B64 }}
         run: |
-          if [ -z "$KEYSTORE_B64" ]; then echo "::error::Missing CS_KEYSTORE_B64 secret (signing key)"; exit 1; fi
+          if [ -z "$KEYSTORE_B64" ]; then
+            echo "::warning::No CS_KEYSTORE_B64 secret yet: running tests + a debug build only, no Release published."
+            echo "signed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "signed=true" >> "$GITHUB_OUTPUT"
           printf '%s' "$KEYSTORE_B64" | tr -d '\r\n \357\273\277' | base64 -d > "$RUNNER_TEMP/release.jks"
           echo "CS_KEYSTORE_FILE=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
 
+      - name: Unit tests + debug build (no signing key yet)
+        if: steps.key.outputs.signed != 'true'
+        run: |
+          chmod +x gradlew
+          ./gradlew testDebugUnitTest assembleDebug --console=plain
+
       - name: Unit tests + signed release APK
+        if: steps.key.outputs.signed == 'true'
         env:
           CS_KEYSTORE_PASSWORD: ${{ secrets.CS_KEYSTORE_PASSWORD }}
           CS_KEY_ALIAS: courtside
@@ -56,6 +69,7 @@ jobs:
           path: app/build/reports/tests/
 
       - name: Publish release
+        if: steps.key.outputs.signed == 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v0.1.${{ github.run_number }}
