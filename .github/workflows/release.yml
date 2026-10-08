@@ -1,0 +1,64 @@
+# Every push to main: run the tests, build a signed APK, publish it as a GitHub Release.
+# Obtainium on the phone watches these Releases and installs updates.
+name: build-and-release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      CS_BUILD_NUMBER: ${{ github.run_number }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Install Android platform
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;36.0.0" > /dev/null
+
+      - name: Decode signing key
+        env:
+          KEYSTORE_B64: ${{ secrets.CS_KEYSTORE_B64 }}
+        run: |
+          if [ -z "$KEYSTORE_B64" ]; then echo "::error::Missing CS_KEYSTORE_B64 secret (signing key)"; exit 1; fi
+          printf '%s' "$KEYSTORE_B64" | tr -d '\r\n \357\273\277' | base64 -d > "$RUNNER_TEMP/release.jks"
+          echo "CS_KEYSTORE_FILE=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
+
+      - name: Unit tests + signed release APK
+        env:
+          CS_KEYSTORE_PASSWORD: ${{ secrets.CS_KEYSTORE_PASSWORD }}
+          CS_KEY_ALIAS: courtside
+          CS_KEY_PASSWORD: ${{ secrets.CS_KEYSTORE_PASSWORD }}
+        run: |
+          chmod +x gradlew
+          ./gradlew testDebugUnitTest assembleRelease --console=plain
+          cp app/build/outputs/apk/release/app-release.apk "CourtsideAI-0.1.${CS_BUILD_NUMBER}.apk"
+
+      - name: Upload test reports on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: app/build/reports/tests/
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v0.1.${{ github.run_number }}
+          name: Courtside AI 0.1.${{ github.run_number }}
+          body: ${{ github.event.head_commit.message }}
+          files: CourtsideAI-0.1.${{ github.run_number }}.apk

@@ -1,0 +1,98 @@
+{
+  "sections": [
+    {
+      "title": "🏆 The 60-second version",
+      "bullets": [
+        "Each week you play one team. Whoever wins more of the 9 stat categories wins the week. 5-4 counts the same as 9-0.",
+        "Our build: big men. We win FG%, Rebounds, Blocks and Turnovers (fewer is better), plus Points or Steals. We ignore Free-Throw %.",
+        "Only 25 games count per week. Hold at 24, then start everyone on the busiest night. Every game that night counts.",
+        "Check the app for 5 minutes a day before 7 PM ET. You never need to watch a game.",
+        "Trade two good players for one great one. The deep waiver wire refills the empty spot."
+      ]
+    },
+    {
+      "title": "💰 Draft night (auction, $200)",
+      "bullets": [
+        "Plan A: Wembanyama ~$78 + Giannis ~$52 + one core big ~$30. Then values and $1 guards.",
+        "Plan B (Wemby above $80): Jokic ~$80 + Jalen Johnson + Amen Thompson + Duren + Clingan.",
+        "On your nomination turn early on, nominate from the Nominate list (expensive players we don't want) so rivals spend.",
+        "Never bid past MAX. Any bid can be the final one.",
+        "Lost a bidding war? Move that money to the next player in the same tier. Don't sit on it.",
+        "Get 3+ guard-eligible players (PG/SG) for the guard slots.",
+        "Room heat above ×1.08 = prices running hot, so wait for bargains. Below ×0.95 = buy now.",
+        "Finish with $0-3 left. Leftover money is worthless after the draft.",
+        "Tap each sale into the Draft tab so Budget, Max bid and Room heat stay right."
+      ]
+    },
+    {
+      "title": "🧮 The 25-game trick",
+      "bullets": [
+        "ESPN counts at most 25 starter games per week, checked at the START of each day.",
+        "If you start a day at 24 games, every game that day counts, even 30+.",
+        "Each Monday the My Team tab picks your ALL-IN night (the most of your players playing).",
+        "Before that night, start only as many players as the plan says (start your best ones).",
+        "Enter ESPN's Games Played number in My Team each morning to keep the plan accurate.",
+        "Ahead in FG% near the limit? Don't start poor shooters. Behind? Start efficient big men first."
+      ]
+    },
+    {
+      "title": "📅 Daily 5-minute routine (before 7 PM ET)",
+      "bullets": [
+        "Open Injuries → My players. Anyone 'Out'? Move him to IR in ESPN and start someone else.",
+        "Anyone 'Day-To-Day'? Check again about 1 hour before his game.",
+        "Open My Team: how many to start today? Set it in the ESPN app.",
+        "Every starting slot should have a player with a game, except when holding at 24.",
+        "Late West Coast games (10 PM ET): put those players in UTIL/G/F slots so you can swap if they sit."
+      ]
+    },
+    {
+      "title": "🗓 Monday plan (20-30 minutes)",
+      "bullets": [
+        "Look at this week's opponent in ESPN. Which of our 5 categories could he beat us in?",
+        "Today tab: which day has the most NBA games? Usually that's the ALL-IN night.",
+        "Plan 1-2 pickups: a fill-in for the ALL-IN night or a blocks/steals specialist.",
+        "Thursday/Friday: ignore categories already won or lost; spend moves only on close ones."
+      ]
+    },
+    {
+      "title": "🔁 Waivers, IR and pickups",
+      "bullets": [
+        "Watch minutes, not one big game. A player suddenly playing 30+ minutes is worth adding.",
+        "Our waiver priority never resets. Only use it when a starter gets hurt and his backup takes over.",
+        "Max 7 pickups per week. Keep one for the last day.",
+        "IR (2 spots): only players marked Out/IR can go there. When an IR player is healthy again, ESPN blocks all pickups until you move him back.",
+        "Never drop a good player for a one-week rental."
+      ]
+    },
+    {
+      "title": "🤝 Trades",
+      "bullets": [
+        "Two good players for one great one = the best trade under the 25-game limit.",
+        "Sell players whose value is free throws, assists or 3-pointers (categories we ignore).",
+        "Buy injured or slumping big men cheap.",
+        "Only 2 managers need to veto, so trades must LOOK fair. Explain why in the note.",
+        "Trade deadline: Feb 19, 2027, noon ET."
+      ]
+    },
+    {
+      "title": "🏁 Playoffs (≈ mid-March to early April 2027)",
+      "bullets": [
+        "6 of 10 teams make it. A top-2 finish probably earns a first-round bye.",
+        "Ties in the standings are broken by head-to-head record, so beat the other top teams.",
+        "Dallas and Phoenix play the most games in the playoff weeks; Cleveland and New Orleans the fewest.",
+        "Late season, bad teams rest stars. Sell their stars before Feb 19; pick up their young players."
+      ]
+    },
+    {
+      "title": "📖 Words you'll hear",
+      "bullets": [
+        "FG% / FT%: field-goal % / free-throw %. 3PM: 3-pointers made. TO: turnovers (fewer wins).",
+        "PG/SG = guards, SF/PF = forwards, C = center. G slot = any guard, F = any forward, UTIL = anyone.",
+        "Punt: ignore a category on purpose to win the others.",
+        "Out / Day-To-Day (DTD) / Game-Time Decision (GTD): injury tags.",
+        "Back-to-back: a team playing two nights in a row. Stars often rest one.",
+        "ADP: how early players usually get drafted. Sleeper = underrated, bust = overrated."
+      ]
+    }
+  ]
+}
